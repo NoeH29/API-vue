@@ -43,6 +43,11 @@
             <span>Login</span>
           </button>
         </div>
+
+        <p class="forgot-password text-right">
+          <router-link to="forgot">Forgot password?</router-link>
+          <p>
+            
         <div class="form-group">
           <div v-if="message" class="alert alert-danger" role="alert">{{message}}</div>
         </div>

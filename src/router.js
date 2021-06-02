@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
+import Forgot from './views/ForgotPassword.vue';
 
 Vue.use(Router);
 
@@ -21,6 +22,10 @@ export const router = new Router({
     {
       path: '/login',
       component: Login
+    },
+    {
+      path: '/forgot',
+      component: Forgot,
     },
     {
       path: '/register',
@@ -46,16 +51,16 @@ export const router = new Router({
     }
   ]
 });
-router.beforeEach((to, from, next) => {
-    const publicPages = ["/login", "/register", "/home", "/article"];
-    const authRequired = !publicPages.includes(to.path);
-    const loggedIn = localStorage.getItem("user");
+// router.beforeEach((to, from, next) => {
+//     const publicPages = ["/login", "/register", "/home", "/article","/forgot","/email-activate"];
+//     const authRequired = !publicPages.includes(to.path);
+//     const loggedIn = localStorage.getItem("user");
 
-    // trying to access a restricted page + not logged in
-    // redirect to login page
-    if (authRequired && !loggedIn) {
-        next("/login");
-    } else {
-        next();
-    }
-});
+//     // trying to access a restricted page + not logged in
+//     // redirect to login page
+//     if (authRequired && !loggedIn) {
+//         next("/login");
+//     } else {
+//         next();
+//     }
+// });
