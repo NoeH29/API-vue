@@ -9,7 +9,7 @@
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/article" class="nav-link">Article</router-link>
+          <router-link to="/articles" class="nav-link">Article</router-link>
         </li>
         <li v-if="showAddArticle" class="nav-item">
           <router-link to="/add" class="nav-link">Add</router-link>
@@ -43,8 +43,8 @@
           </router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href @click.prevent="logOut">
-            <font-awesome-icon icon="sign-out-alt" />LogOut
+          <a class="nav-link" href @click.prevent="logout">
+            <font-awesome-icon icon="sign-out-alt" />Logout
           </a>
         </li>
       </div>
@@ -76,7 +76,7 @@ export default {
     },
   },
   methods: {
-    logOut() {
+    logout() {
       this.$store.dispatch('auth/logout');
       this.$router.push('/login');
     }
