@@ -45,7 +45,7 @@
         </div>
 
         <p class="forgot-password text-right">
-          <router-link to="forgot">Forgot password?</router-link>
+          <router-link to="/forgot-password">Forgot password?</router-link>
           <p>
             
         <div class="form-group">
@@ -140,4 +140,8 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+.container {
+ height: 600px;
+}
+
 </style>

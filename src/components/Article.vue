@@ -3,20 +3,20 @@
     <h4>Article</h4>
     <form>
       <div class="form-group">
-        <label for="title">Title</label>
+        <label for="title">Titre :</label>
         <input type="text" class="form-control" id="title"
           v-model="currentArticle.title"
         />
       </div>
       <div class="form-group">
-        <label for="description">Description</label>
+        <label for="description">Description :</label>
         <input type="text" class="form-control" id="description"
           v-model="currentArticle.description"
         />
       </div>
 
       <div class="form-group">
-        <label for="price">Price</label>
+        <label for="price">Prix :</label>
         <input type="text" class="form-control" id="price"
           v-model="currentArticle.price"
         />
@@ -37,21 +37,21 @@
       </div>
 
       <div class="form-group">
-        <label for="comments">comments</label>
+        <label for="comments">commentaire :</label>
         <input type="text" class="form-control" id="comments"
           v-model="currentArticle.comments"
         />
       </div>
 
       <div class="form-group">
-        <label for="catégorie">catégorie</label>
+        <label for="catégorie">catégorie :</label>
         <input type="text" class="form-control" id="catégorie"
           v-model="currentArticle.catégorie"
         />
       </div>
 
       <div class="form-group">
-        <label><strong>Status:</strong></label>
+        <label><strong>Status :</strong></label>
         {{ currentArticle.published ? "Published" : "Pending" }}
       </div>
     </form>
@@ -65,7 +65,7 @@
     <button v-else class="badge badge-primary mr-2"
       @click="updatePublished(true)"
     >
-      Publish
+      Dépublier
     </button>
 
     <button class="badge badge-danger mr-2"
@@ -167,6 +167,6 @@ export default {
 <style>
 .edit-form {
   max-width: 300px;
-  margin: auto;
 }
+
 </style>

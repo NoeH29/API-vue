@@ -2,7 +2,7 @@
   <div class="submit-form">
     <div v-if="!submitted">
       <div class="form-group">
-        <label for="title">Title</label>
+        <label for="title">Titre :</label>
         <input
           type="text"
           class="form-control"
@@ -14,7 +14,7 @@
       </div>
 
       <div class="form-group">
-        <label for="description">Description</label>
+        <label for="description">Description :</label>
         <input
           class="form-control"
           id="description"
@@ -25,7 +25,7 @@
       </div>
 
       <div class="form-group">
-        <label for="price">price</label>
+        <label for="price">prix :</label>
         <input
           class="form-control"
           id="price"
@@ -36,7 +36,7 @@
       </div>
 
       <div class="form-group">
-        <label for="imageUrl">imageUrl</label>
+        <label for="imageUrl">imageUrl :</label>
         <input
           class="form-control"
           id="imageUrl"
@@ -47,7 +47,7 @@
       </div>
 
       <div class="form-group">
-        <label for="catégorie">catégorie</label>
+        <label for="catégorie">catégorie :</label>
         <input
           class="form-control"
           id="catégorie"
@@ -58,7 +58,7 @@
       </div>
 
       <div class="form-group">
-        <label for="total_vendu">total_vendu</label>
+        <label for="total_vendu">total vendu :</label>
         <input
           class="form-control"
           id="total_vendu"
@@ -69,7 +69,7 @@
       </div>
 
       <div class="form-group">
-        <label for="comments">comments</label>
+        <label for="comments">commentaire :</label>
         <input
           class="form-control"
           id="comments"

@@ -13,10 +13,12 @@ import {
   faUser,
   faUserPlus,
   faSignInAlt,
-  faSignOutAlt
+  faSignOutAlt,
+  faCartPlus,
 } from '@fortawesome/free-solid-svg-icons';
+import VueAgile from 'vue-agile';
 
-library.add(faHome, faUser, faUserPlus, faSignInAlt, faSignOutAlt);
+library.add(faHome, faUser, faUserPlus, faSignInAlt, faSignOutAlt, faCartPlus);
 
 Vue.config.productionTip = false;
 
@@ -24,6 +26,8 @@ Vue.use(VeeValidate);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.use(Vuex);
+Vue.use(VueAgile);
+
 
 new Vue({
   router,

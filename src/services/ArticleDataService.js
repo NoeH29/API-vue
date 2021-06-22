@@ -22,7 +22,7 @@ class ArticleDataService {
   }
 
   deleteAll() {
-    return http.delete(`/articles`);
+    return http.delete(`/articles/articles`);
   }
 
   findByTitle(title) {

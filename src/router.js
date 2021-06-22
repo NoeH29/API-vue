@@ -3,12 +3,11 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
-import Forgot from './views/ForgotPassword.vue';
 
 Vue.use(Router);
 
 export const router = new Router({
-  //mode: 'history',
+  // mode: 'history',
   routes: [
     {
       path: '/',
@@ -24,8 +23,14 @@ export const router = new Router({
       component: Login
     },
     {
-      path: '/forgot',
-      component: Forgot,
+      path: '/mentionlg',
+      name: 'mentionlg',
+      component: () => import('./components/MentionLG.vue')
+    },
+    {
+      path: '/forgot-password',
+      name: 'FortgotPassword',
+      component: () => import('./views/ForgotPassword.vue')
     },
     {
       path: '/register',
@@ -62,20 +67,27 @@ export const router = new Router({
     {
       path: "/add",
       name: "add",
-      component: () => import("./components/AddArticle")
-    }
+      component: () => import("./components/AddArticle"),
+    },
+    {
+      path: "/panier",
+      name: "Panier",
+      component: () => import("./components/Panier")
+    },
   ]
 });
-// router.beforeEach((to, from, next) => {
-//     const publicPages = ["/login", "/register", "/home", "/article","/forgot","/email-activate"];
-//     const authRequired = !publicPages.includes(to.path);
-//     const loggedIn = localStorage.getItem("user");
 
-//     // trying to access a restricted page + not logged in
-//     // redirect to login page
-//     if (authRequired && !loggedIn) {
-//         next("/login");
-//     } else {
-//         next();
-//     }
-// });
+router.beforeEach((to, from, next) => {
+    const publicPages = ["/login", "/register", "/home","/articles","/forgot-password","/email-activate","/mentionlg","/panier"];
+    const authRequired = !publicPages.includes(to.path);
+    const loggedIn = localStorage.getItem("user");
+
+
+    // trying to access a restricted page + not logged in
+    // redirect to login page
+    if (authRequired && !loggedIn) {
+        next("/login");
+    } else {
+        next();
+    }
+});

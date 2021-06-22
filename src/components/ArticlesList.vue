@@ -8,13 +8,13 @@
           <button class="btn btn-outline-secondary" type="button"
             @click="searchTitle"
           >
-            Search
+            Recherche
           </button>
         </div>
       </div>
     </div>
     <div class="col-md-6">
-      <h4>Articles List</h4>
+      <h4>Articles Liste :</h4>
       <ul class="list-group">
         <li class="list-group-item"
           :class="{ active: index == currentIndex }"
@@ -26,7 +26,7 @@
         </li>
       </ul>
 
-      <button class="m-3 btn btn-sm btn-danger" @click="removeAllArticles">
+      <button v-if="ShowButton" class="m-3 btn btn-sm btn-danger" @click="removeAllArticles">
         Remove All
       </button>
     </div>
@@ -34,23 +34,26 @@
       <div v-if="currentArticle">
         <h4>Article</h4>
         <div>
-          <label><strong>Title:</strong></label> {{ currentArticle.title }}
+          <label><strong>Titre :</strong></label> {{ currentArticle.title }}
         </div>
         <div>
-          <label><strong>Description:</strong></label> {{ currentArticle.description }}
+          <label><strong>Description :</strong></label> {{ currentArticle.description }}
         </div>
         <div>
-          <label><strong>Price:</strong></label> {{ currentArticle.price }}
+          <label><strong>Prix :</strong></label> {{ currentArticle.price }}
         </div>
-        <div>
+        <!-- <div>
           <label><strong>Status:</strong></label> {{ currentArticle.published ? "Published" : "Pending" }}
-        </div>
-
+        </div> -->
+        <div v-if="ShowButton">
         <router-link :to="'/articles/' + currentArticle.id" class="badge badge-warning">Edit</router-link>
-      </div>
+        </div>
+        <button v-on:click="addToPanier(currentArticle)">Ajouter au panier</button>
+        </div>
+      
       <div v-else>
         <br />
-        <p>Please click on a Article...</p>
+        <p>clic sur l'article...</p>
       </div>
     </div>
   </div>
@@ -69,6 +72,17 @@ export default {
       title: ""
     };
   },
+  computed: {
+    currentUser() {
+      return this.$store.state.auth.user;
+    },
+    ShowButton() {
+      if (this.currentUser && this.currentUser.roles) {
+        return this.currentUser.roles.includes('ROLE_ADMIN');
+      }
+      return false;
+    }
+  },
   methods: {
     retrieveArticles() {
       ArticleDataService.getAll()
@@ -80,6 +94,10 @@ export default {
           console.log(e);
         });
     },
+    addToPanier: function (article) {
+      // console.Log(articles);
+  this.$store.dispatch("pushToPanier", article);
+  },
 
     refreshList() {
       this.retrieveArticles();
@@ -125,5 +143,10 @@ export default {
   text-align: left;
   max-width: 750px;
   margin: auto;
+  margin-top: 10px;
 }
+.list-group-item {
+  margin: 5% 0;
+}
+
 </style>

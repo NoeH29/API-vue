@@ -21,7 +21,11 @@
             class="alert alert-danger"
             role="alert"
           >Email is required ! </div>
-          
+           <div
+        v-if="message"
+        class="alert"
+        :class="successful ? 'alert-success' : 'alert-danger'"
+      >{{message}}</div>
         </div>
       </form>
     </div>
@@ -30,18 +34,21 @@
 </template>
 
 <script>
+
 import axios from 'axios';
 
 export default {
     name: 'ForgotPassword',
     data(){
         return {
-            email: ''
+            email: '',
+            successful: false,
+            message: '',
         }
     },
     methods: {
-        async handleSubmit() {
-            const response = axios.post('forgot-password', {
+      async handleSubmit() {
+            const response = await axios.post('forgot-password', {
                 email: this.email
             });
 
