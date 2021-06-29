@@ -48,7 +48,7 @@
         <div v-if="ShowButton">
         <router-link :to="'/articles/' + currentArticle.id" class="badge badge-warning">Edit</router-link>
         </div>
-        <button v-on:click="addToPanier(currentArticle)">Ajouter au panier</button>
+        <button v-on:click="addToPanier(articles)">Ajouter au panier</button>
         </div>
       
       <div v-else>
@@ -94,9 +94,9 @@ export default {
           console.log(e);
         });
     },
-    addToPanier: function (article) {
+    addToPanier: function (articles) {
       // console.Log(articles);
-  this.$store.dispatch("pushToPanier", article);
+  this.$store.dispatch("pushToPanier", articles);
   },
 
     refreshList() {

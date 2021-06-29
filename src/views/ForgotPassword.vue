@@ -47,8 +47,8 @@ export default {
         }
     },
     methods: {
-      async handleSubmit() {
-            const response = await axios.post('forgot-password', {
+    async handleSubmit() {
+          const response = await axios.put('http://localhost:8080/auth/forgot-password', {
                 email: this.email
             });
 

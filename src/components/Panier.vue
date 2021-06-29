@@ -1,34 +1,35 @@
 <template>
   <div id="panier">
-    {{ mail }}
+
     <h2>Voici le panier</h2>
     <div
       id="panierContainer"
       v-for="panierItem in panierStorage"
-      v-bind:key="panierItem.articles"
+      :key="panierItem.articles"
     >
-      <div class="panierElement" v-if="panierItem.nom_produit">
-        <h4>Nom : {{ panierItem.nom_produit }}</h4>
+      <div class="panierElement" v-if="panierItem.articles">
+        <h4>Nom : {{ panierItem.articles.title }}</h4>
         <p>Prix : {{ panierItem.articles.price }}</p>
         <div class="inlineFlex">
           <p>Quantité :</p>
           <i
             class="fas fa-minus-circle"
-            @click="changeQuantity(panierItem.articles, 'less')"
+            @click="changeQuantity(panierItem.articles.id, 'less')"
           ></i>
           <p>{{ panierItem.quantity }}</p>
           <i
             class="fas fa-plus-circle"
-            @click="changeQuantity(panierItem.articles, 'more')"
+            @click="changeQuantity(panierItem.articles.id, 'more')"
           ></i>
         </div>
         <i
           class="fas fa-times"
-          @click="deletePanierItem('produit', panierItem.articles)"
+          @click="deletePanierItem('articles', panierItem.articles.id)"
         ></i>
       </div>
     </div>
     <button @click="validerPanier">Valider Ma Commande</button>
+    <br><br>
     <h4>Prix Total : {{ prixTotal }} €</h4>
   </div>
 </template>
@@ -38,24 +39,23 @@ export default {
   name: "Panier",
   data: function () {
     return {
-      panierStorage: JSON.parse(localStorage.getItem("panier")),
-      mail: null,
+      panierStorage: JSON.parse(localStorage.getItem("panier"))
     };
   },
   methods: {
-    deletePanierItem(type, id, produit) {
-      if (type === "menu") {
-        console.log(produit);
+    deletePanierItem(type, id, articles) {
+      if (type === "articles") {
+        console.log(articles);
         const indice = this.panierStorage.findIndex(
-          (panier) => panier.currentArticles === produit
+          (panier) => panier.curentarticles === articles
         );
-        // console.log("menu" + indice);
+        console.log("articles" + indice);
         this.panierStorage.splice(indice, 1);
-      } else if (type === "produit") {
+      } else if (type === "articles") {
         let indice = this.panierStorage.findIndex(
-          (panier) => panier.articles === id
+          (panier) => panier.articles.id === id
         );
-        console.log("produit" + indice);
+        console.log("articles" + indice);
         this.panierStorage.splice(indice, 1);
       }
       const panierToStorage = JSON.stringify(this.panierStorage);
@@ -63,13 +63,13 @@ export default {
     },
     changeQuantity(id, change) {
       const indice = this.panierStorage.findIndex(
-        (panier) => panier.articles === id
+        (panier) => panier.articles.id === id
       );
       if (change === "less") {
         if (this.panierStorage[indice].quantity > 1) {
           this.panierStorage[indice].quantity -= 1;
         } else {
-          this.deletePanierItem("produit", id);
+          this.deletePanierItem("articles", id);
         }
       } else if (change === "more") {
         this.panierStorage[indice].quantity += 1;
@@ -82,7 +82,7 @@ export default {
     },
   },
   computed: {
-
+   
     prixTotal: function () {
       const panier = this.panierStorage;
       let sum = 0;
@@ -90,7 +90,7 @@ export default {
         panier.forEach((panierItems) => {
 
             sum += panierItems.articles * panierItems.quantity;
-          // console.log(sum);
+          console.log(sum);
         });
       }
       // pour que le total ait toujours que 2 chiffres après la virgule
@@ -114,9 +114,7 @@ export default {
   justify-content: space-evenly;
   align-items: center;
 }
-#panierContainer {
-  width: 90%;
-}
+
 button {
   width: 15%;
   margin-top: 4%;

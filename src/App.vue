@@ -1,123 +1,79 @@
 <template>
+
   <div id="app">
-
-    <nav class="navbar navbar-expand navbar-light" style="background-color: #e3f2fd;">
-      <a href class="navbar-brand" @click.prevent>Noe H Application</a>
-      <div class="navbar-nav mr-auto uppercase font-semibold ">
-        <li class="nav-item">
-          <router-link to="/home" class="nav-link">
-            <font-awesome-icon icon="home" />Home
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/articles" class="nav-link">Article</router-link>
-        </li>
-        <li v-if="showAddArticle" class="nav-item">
-          <router-link to="/add" class="nav-link">Add</router-link>
-        </li>
-        <li v-if="showAdminBoard" class="nav-item">
-          <router-link to="/admin" class="nav-link">Admin Board</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link v-if="currentUser" to="/user" class="nav-link">User</router-link>
-        </li>
-      </div>
-
-      
-
-
-      <div class="navbar-nav ml-auto">
-        <li class="nav-item ml-">
-          <router-link to="/panier" class="nav-link ">
-            <font-awesome-icon icon="sign-in-alt" />Panier
-          </router-link>
-        </li>
-      </div>
-      <div v-if="!currentUser" class="navbar-nav ml-auto">
-        <li class="nav-item ">
-          <router-link to="/register" class="nav-link">
-            <font-awesome-icon icon="user-plus" />Enregistre toi
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/login" class="nav-link ">
-            <font-awesome-icon icon="sign-in-alt" />Login
-          </router-link>
-        </li>
-      </div>
-
-      <div v-if="currentUser" class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <router-link to="/profil" class="nav-link">
-            <font-awesome-icon icon="user" />
-            {{ currentUser.username }}
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href @click.prevent="logout">
-            <font-awesome-icon icon="sign-out-alt" />Logout
-          </a>
-        </li>
-      </div>
-    </nav>
-
-    
-    <div class="container">
-      <router-view />
-    </div>
-    <Footer />
+  <div>
+  <Navbar />
   </div>
+    <div class="container">
+
+      <router-view />
+
+    </div>
+  <div>
+  <Footer />
+  </div>
+  </div>
+
 
 </template>
 
 <script>
 import Footer from "@/components/Footer.vue";
+import Navbar from './components/Navbar.vue';
 export default {
   components: {
     Footer,
-  },
-  computed: {
-    currentUser() {
-      return this.$store.state.auth.user;
-    },
-    showAdminBoard() {
-      if (this.currentUser && this.currentUser.roles) {
-        return this.currentUser.roles.includes('ROLE_ADMIN');
-      }
-      return false;
-    },
-    showAddArticle() {
-      if (this.currentUser && this.currentUser.roles) {
-        return this.currentUser.roles.includes('ROLE_ADMIN');
-      }
-      return false;
-    },
-  },
-  methods: {
-    logout() {
-      this.$store.dispatch('auth/logout');
-      this.$router.push('/login');
-    }
+    Navbar
   }
 };
 </script>
 
-<style>
+<style >
 html {
-  background-color: bisque;
+  -webkit-animation: color-change-2x 15s linear infinite alternate both;
+	animation: color-change-2x 15s linear infinite alternate both;
   height: 100%;
   width: 100%;
 }
+.jumbotron{
+  height: 60%;
+}
 #app{
-  background-color: bisque;
+  -webkit-animation: color-change-2x 15s linear infinite alternate both;
+	animation: color-change-2x 15s linear infinite alternate both;
   height: 100%;
     width: 100%;
     margin: 0;
     display: table;
 }
 .container {
-  background-color: bisque;
+  -webkit-animation: color-change-2x 15s linear infinite alternate both;
+	animation: color-change-2x 15s linear infinite alternate both;
   height: 100%;
+  animation:bounce-top 1.3s both;
+  margin-top: 6%
 }
+
+
+@-webkit-keyframes color-change-2x {
+  0% {
+    background: #19dcea;
+  }
+  100% {
+    background: #2769f7;
+  }
+}
+@keyframes color-change-2x {
+  0% {
+    background: #19dcea;
+  }
+  100% {
+    background: #2769f7;
+  }
+}
+
+.container{animation:bounce-top 1.3s both}
+@keyframes bounce-top{0%{transform:translateY(-45px);animation-timing-function:ease-in;opacity:1}24%{opacity:1}40%{transform:translateY(-24px);animation-timing-function:ease-in}65%{transform:translateY(-12px);animation-timing-function:ease-in}82%{transform:translateY(-6px);animation-timing-function:ease-in}93%{transform:translateY(-4px);animation-timing-function:ease-in}25%,55%,75%,87%{transform:translateY(0);animation-timing-function:ease-out}100%{transform:translateY(0);animation-timing-function:ease-out;opacity:1}} 
+
 
 </style>

@@ -1,63 +1,29 @@
 <template>
-  <div v-if="currentArticle" class="edit-form">
-    <h4>Article</h4>
+<div class="container">
+  <div v-if="currentTutorial" class="edit-form">
+    <h4>Tutorial</h4>
     <form>
       <div class="form-group">
-        <label for="title">Titre :</label>
+        <label for="title">Title</label>
         <input type="text" class="form-control" id="title"
-          v-model="currentArticle.title"
+          v-model="currentTutorial.title"
         />
       </div>
       <div class="form-group">
-        <label for="description">Description :</label>
+        <label for="description">Description</label>
         <input type="text" class="form-control" id="description"
-          v-model="currentArticle.description"
+          v-model="currentTutorial.description"
         />
       </div>
 
       <div class="form-group">
-        <label for="price">Prix :</label>
-        <input type="text" class="form-control" id="price"
-          v-model="currentArticle.price"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="imageUrl">imageUrl</label>
-        <input type="text" class="form-control" id="imageUrl"
-          v-model="currentArticle.imageUrl"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="total_vendu">total_vendu</label>
-        <input type="text" class="form-control" id="total_vendu"
-          v-model="currentArticle.total_vendu"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="comments">commentaire :</label>
-        <input type="text" class="form-control" id="comments"
-          v-model="currentArticle.comments"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="catégorie">catégorie :</label>
-        <input type="text" class="form-control" id="catégorie"
-          v-model="currentArticle.catégorie"
-        />
-      </div>
-
-      <div class="form-group">
-        <label><strong>Status :</strong></label>
-        {{ currentArticle.published ? "Published" : "Pending" }}
+        <label><strong>Status:</strong></label>
+        {{ currentTutorial.published ? "Published" : "Pending" }}
       </div>
     </form>
 
     <button class="badge badge-primary mr-2"
-      v-if="currentArticle.published"
+      v-if="currentTutorial.published"
       @click="updatePublished(false)"
     >
       UnPublish
@@ -65,17 +31,17 @@
     <button v-else class="badge badge-primary mr-2"
       @click="updatePublished(true)"
     >
-      Dépublier
+      Publish
     </button>
 
     <button class="badge badge-danger mr-2"
-      @click="deleteArticle"
+      @click="deleteTutorial"
     >
       Delete
     </button>
 
     <button type="submit" class="badge badge-success"
-      @click="updateArticle"
+      @click="updateTutorial"
     >
       Update
     </button>
@@ -84,15 +50,16 @@
 
   <div v-else>
     <br />
-    <p>Please click on a Article...</p>
+    <p>Please click on a Tutorial...</p>
   </div>
+</div>
 </template>
 
 <script>
 import ArticleDataService from "../services/ArticleDataService";
 
 export default {
-  name: "article",
+  name: "Article",
   data() {
     return {
       currentArticle: null,

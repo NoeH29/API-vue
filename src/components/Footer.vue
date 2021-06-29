@@ -26,16 +26,33 @@ export default {
 };
 </script>
 
-<style>
+<style >
 #foot {
   background-color: bisque;
-  height: 10vh;
+  /* height: 10vh; */
   padding: 2.1em 0;
   border-top: .1em solid #ecebe9;
   font-size: .75em;
   text-align: center;
+  -webkit-animation: color-change-2x 15s linear infinite alternate both;
+	animation: color-change-2x 15s linear infinite alternate both;
 }
-
+@-webkit-keyframes color-change-2x {
+  0% {
+    background: #19dcea;
+  }
+  100% {
+    background: #c462fd;
+  }
+}
+@keyframes color-change-2x {
+  0% {
+    background: #19dcea;
+  }
+  100% {
+    background: #c462fd;
+  }
+}
 #liens {
   height: 0%;
   width: 60%;

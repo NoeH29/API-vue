@@ -140,8 +140,6 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
-.container {
- height: 600px;
-}
+
 
 </style>
