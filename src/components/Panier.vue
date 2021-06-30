@@ -105,8 +105,7 @@ export default {
 <style scoped>
 #panier {
   background: whitesmoke;
-  margin: 1% 10%;
-  height: auto;
+  height: 70%;
   border-radius: 10px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   display: flex;
@@ -116,7 +115,7 @@ export default {
 }
 
 button {
-  width: 15%;
+  width: 40%;
   margin-top: 4%;
   padding: 10px;
   background-color: whitesmoke;

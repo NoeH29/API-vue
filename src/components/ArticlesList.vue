@@ -5,7 +5,7 @@
         <input type="text" class="form-control" placeholder="Search by title"
           v-model="title"/>
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button"
+          <button class="btn btn-primary" type="button"
             @click="searchTitle"
           >
             Recherche
@@ -42,9 +42,6 @@
         <div>
           <label><strong>Prix :</strong></label> {{ currentArticle.price }}
         </div>
-        <!-- <div>
-          <label><strong>Status:</strong></label> {{ currentArticle.published ? "Published" : "Pending" }}
-        </div> -->
         <div v-if="ShowButton">
         <router-link :to="'/articles/' + currentArticle.id" class="badge badge-warning">Edit</router-link>
         </div>

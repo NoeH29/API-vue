@@ -12,8 +12,8 @@
     </p>
     <br>
     <p>
-      <strong>Mot de passe :</strong>
-      {{currentUser.password}}
+      <strong>Change ton mot de passe :<a href="http://localhost:8080/#/forgot-password">  ici</a></strong>
+      
     </p>
     <br>
     <p>

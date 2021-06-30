@@ -96,6 +96,9 @@ export default {
   -webkit-animation: roll-in-right 0.6s ease-out both;
 	animation: roll-in-right 0.6s ease-out both;
 }
+#navbar {
+padding: 5% 0;
+}
 @-webkit-keyframes roll-in-right {
   0% {
     -webkit-transform: translateX(800px) rotate(540deg);

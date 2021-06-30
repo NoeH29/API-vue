@@ -11,6 +11,7 @@
         <div class="form-group">
           <label for="email">Email</label>
           <input
+            v-model="email"
             placeholder="Email"
             type="email"
             class="form-control"
@@ -47,12 +48,14 @@ export default {
         }
     },
     methods: {
-    async handleSubmit() {
-          const response = await axios.put('http://localhost:8080/auth/forgot-password', {
+  handleSubmit() {
+          axios.post('http://localhost:8080/auth/forgot-password', {
                 email: this.email
-            });
-
-            console.log(response);
+            }).then((response) => {
+              console.log(response)
+            }).catch((error) => {
+              console.log(error)
+            }); 
         }
     }
 }

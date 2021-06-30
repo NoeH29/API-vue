@@ -29,6 +29,7 @@ export default {
 <style >
 #foot {
   background-color: bisque;
+
   /* height: 10vh; */
   padding: 2.1em 0;
   border-top: .1em solid #ecebe9;

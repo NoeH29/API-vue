@@ -11,15 +11,10 @@
         <div class="form-group">
           <label for="newPassword">New Password</label>
           <input
+            v-model="newPassword"
             placeholder="newPassword"
             type="newPassword"
             class="form-control"
-          />
-          <label class="resetlink" for="resetLink">resetLink</label>
-          <input
-            placeholder="resetLink"
-            type="resetLink"
-            class="form-group"
           />
           <button class="btn btn-primary btn-block">Submit</button>
           <div
@@ -47,19 +42,22 @@ export default {
     name: 'ResetPassword',
     data(){
         return {
-            Password: '',
+            newPassword: '',
             resetLink: this.$route.params.token,
         }
     },
     methods: {
-    async handleSubmit() {
-            const response = await axios.put('http://localhost:8080/auth/reset-password', {
-                newPassword: this.Password,
+  handleSubmit() {
+            axios.put('http://localhost:8080/auth/reset-password', {
+                newPassword: this.newPassword,
                 resetLink: this.resetLink,
                 token: this.$route.params.token
-            });
-
-            console.log(response);
+            }).then((response) => {
+              console.log(response)
+            }).catch((error) => {
+              console.log(error)
+            }); 
+            this.$router.push('/login');
         }
     }
 }

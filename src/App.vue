@@ -41,7 +41,7 @@ html {
 #app{
   -webkit-animation: color-change-2x 15s linear infinite alternate both;
 	animation: color-change-2x 15s linear infinite alternate both;
-  height: 100%;
+  height: 80%;
     width: 100%;
     margin: 0;
     display: table;
@@ -49,9 +49,9 @@ html {
 .container {
   -webkit-animation: color-change-2x 15s linear infinite alternate both;
 	animation: color-change-2x 15s linear infinite alternate both;
-  height: 100%;
+  height: 80%;
   animation:bounce-top 1.3s both;
-  margin-top: 6%
+  margin-top: 10%
 }
 
 
